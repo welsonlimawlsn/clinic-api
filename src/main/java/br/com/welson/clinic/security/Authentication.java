@@ -41,7 +41,6 @@ public class Authentication {
         return new AccessToken(token, expirationTime.toLocalDateTime());
     }
 
-    @Transactional
     private ApplicationUser getApplicationUserByUsernameAndPassword(String username, String password) {
         List<ApplicationUser> applicationUsers = applicationUserDAO.findByHQLQuery(0, "applicationUserByUsernameAndPassword", username, password);
         return applicationUsers.size() == 1 ? applicationUsers.get(0) : null;

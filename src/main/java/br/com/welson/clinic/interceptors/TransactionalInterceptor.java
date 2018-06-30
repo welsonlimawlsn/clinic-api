@@ -1,6 +1,7 @@
 package br.com.welson.clinic.interceptors;
 
 import br.com.welson.clinic.annotations.Transactional;
+import br.com.welson.clinic.errors.DefaultError;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
@@ -8,6 +9,7 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.ws.rs.core.Response;
 
 @Interceptor
 @Transactional
@@ -31,7 +33,7 @@ public class TransactionalInterceptor {
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();
-            throw new RuntimeException(e);
+            return new DefaultError(e.getMessage(), Response.Status.INTERNAL_SERVER_ERROR).getResponse();
         }
         return o;
     }

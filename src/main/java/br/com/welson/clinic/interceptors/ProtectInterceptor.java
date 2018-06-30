@@ -1,6 +1,8 @@
 package br.com.welson.clinic.interceptors;
 
 import br.com.welson.clinic.annotations.Protect;
+import br.com.welson.clinic.errors.DefaultError;
+import br.com.welson.clinic.errors.ErrorDetails;
 import br.com.welson.clinic.errors.Forbidden;
 import br.com.welson.clinic.errors.NotAuthorized;
 import br.com.welson.clinic.persistence.model.ApplicationUser;
@@ -41,6 +43,8 @@ public class ProtectInterceptor {
             o = invocationContext.proceed();
         } catch (Exception e) {
             e.printStackTrace();
+            return new DefaultError(e.getMessage(), Response.Status.INTERNAL_SERVER_ERROR).getResponse();
+
         }
         return o;
     }

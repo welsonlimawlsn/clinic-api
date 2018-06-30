@@ -1,7 +1,6 @@
 package br.com.welson.clinic.endpoints;
 
 import br.com.welson.clinic.annotations.Protect;
-import br.com.welson.clinic.persistence.model.Admin;
 import br.com.welson.clinic.persistence.model.ApplicationUser;
 import br.com.welson.clinic.persistence.model.Doctor;
 import br.com.welson.clinic.security.Authentication;

@@ -20,7 +20,7 @@ public class DAOImpl<T extends AbstractEntity> implements DAO<T> {
         HQL_QUERY = new FileXMLService("hql.xml");
     }
 
-    public DAOImpl(EntityManager entityManager, Class<T> classType) {
+    DAOImpl(EntityManager entityManager, Class<T> classType) {
         this.entityManager = entityManager;
         this.classType = classType;
     }
