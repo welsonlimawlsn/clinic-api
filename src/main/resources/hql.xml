@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<queries>
+    <query id="applicationUserByUsernameAndPassword">SELECT au FROM ApplicationUser au WHERE au.username = :username AND au.password = :password</query>
+    <query id="applicationUserByUsername">SELECT au FROM ApplicationUser au WHERE au.username = :username</query>
+</queries>
